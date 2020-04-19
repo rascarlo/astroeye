@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +42,9 @@ class RecentImagesFragment : Fragment() {
         // binding access to view model
         binding.viewModel = viewModel
         // adapter
-        val adapter = RecentImagesAdapter()
+        val adapter = RecentImagesAdapter(RecentImagesAdapter.OnClickListener {
+            viewModel.displayImageDetails(it)
+        })
         // layout manager
         val layoutManager = LinearLayoutManager(
             application.applicationContext,
@@ -80,6 +83,17 @@ class RecentImagesFragment : Fragment() {
         viewModel.recentImages.observe(viewLifecycleOwner, Observer {
             if (null != it) {
                 adapter.submitList(it)
+            }
+        })
+        // observe live data for navigation
+        viewModel.navigateToDetail.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController()
+                    .navigate(
+                        RecentImagesFragmentDirections
+                            .actionRecentImagesFragmentToDetailFragment(it)
+                    )
+                viewModel.displayImageDetailsComplete()
             }
         })
         return binding.root

@@ -9,5 +9,18 @@
         android:id="@+id/recentImagesFragment"
         android:name="com.rascarlo.astroeye.recents.RecentImagesFragment"
         android:label="RecentImagesFragment"
-        tools:layout="@layout/fragment_recent_images" />
+        tools:layout="@layout/fragment_recent_images">
+        <action
+            android:id="@+id/action_recentImagesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.rascarlo.astroeye.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="recentImage"
+            app:argType="com.rascarlo.astroeye.network.RecentImage" />
+    </fragment>
 </navigation>

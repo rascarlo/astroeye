@@ -77,4 +77,5 @@ dependencies {
 
     // Timber
     implementation deps.timber
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

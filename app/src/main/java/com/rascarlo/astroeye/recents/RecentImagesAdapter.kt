@@ -12,7 +12,7 @@ import timber.log.Timber
 /**
  * list adapter for [RecentImagesFragment]
  */
-class RecentImagesAdapter :
+class RecentImagesAdapter(private val onClickListener: RecentImagesAdapter.OnClickListener) :
     ListAdapter<RecentImage, RecentImagesAdapter.RecentImageViewHolder>(DiffCallBack) {
 
     /**
@@ -49,5 +49,13 @@ class RecentImagesAdapter :
         val recentImages = getItem(position)
         Timber.e(recentImages.title)
         holder.bind(recentImages)
+        holder.itemView.setOnClickListener { onClickListener.onClick(recentImages) }
+    }
+
+    /**
+     * simple on click listener class
+     */
+    class OnClickListener(val clickListener: (recentImage: RecentImage) -> Unit) {
+        fun onClick(recentImage: RecentImage) = clickListener(recentImage)
     }
 }

@@ -24,6 +24,23 @@ class RecentImageViewModel : ViewModel() {
     val recentImages: LiveData<List<RecentImage>>
         get() = _recentImages
 
+    /**
+     * used for navigation
+     * use [_navigateToDetail] for internal use
+     * use [navigateToDetail] to expose the live data
+     */
+    private val _navigateToDetail = MutableLiveData<RecentImage>()
+    val navigateToDetail: LiveData<RecentImage>
+        get() = _navigateToDetail
+
+    fun displayImageDetails(recentImage: RecentImage) {
+        _navigateToDetail.value = recentImage
+    }
+
+    fun displayImageDetailsComplete() {
+        _navigateToDetail.value = null
+    }
+
     init {
         fetchRecentImages()
     }
