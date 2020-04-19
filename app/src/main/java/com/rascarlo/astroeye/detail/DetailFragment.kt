@@ -28,6 +28,7 @@ class DetailFragment : Fragment() {
         val viewModelFactory = DetailViewModelFactory(recentImage, application)
         binding.viewModel =
             ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
+        binding.executePendingBindings()
         Timber.d(recentImage.toString())
         // Inflate the layout for this fragment
         return binding.root

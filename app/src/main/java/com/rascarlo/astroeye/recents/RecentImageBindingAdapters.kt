@@ -8,8 +8,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.rascarlo.astroeye.R
 
-@BindingAdapter("bindImage")
-fun bindImage(imageView: ImageView, imgUrl: String?) {
+@BindingAdapter("bindThumb")
+fun bindThumb(imageView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUrl = imgUrl.toUri().buildUpon().scheme("http").build()
         Glide.with(imageView.context)
@@ -17,7 +17,22 @@ fun bindImage(imageView: ImageView, imgUrl: String?) {
             .centerCrop()
             .apply(
                 RequestOptions()
-                    .placeholder(R.drawable.ic_broken_image_black_24dp)
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image_black_24dp)
+            )
+            .into(imageView)
+    }
+}
+
+@BindingAdapter("bindImage")
+fun bindImage(imageView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        val imgUrl = imgUrl.toUri().buildUpon().scheme("http").build()
+        Glide.with(imageView.context)
+            .load(imgUrl)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_broken_image_black_24dp)
             )
             .into(imageView)

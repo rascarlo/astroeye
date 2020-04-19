@@ -50,19 +50,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="192dp"
                 android:contentDescription="@string/content_description_image"
-                app:bindImage="@{recentImage.urlRegular}"
+                app:bindThumb="@{recentImage.urlRegular}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_image_view"
                 app:srcCompat="@drawable/ic_broken_image_black_24dp" />
 
+            <!--android:text="@{recentImage.title != null ? recentImage.title : @string/not_available}"-->
+
             <TextView
                 android:id="@+id/title_text_view"
+                style="@style/ImageTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fira_sans_medium"
-                android:padding="4dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:bindText="@{recentImage.title}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

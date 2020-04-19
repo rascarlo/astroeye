@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ImageTitle">
+        <item name="android:fontFamily">@font/fira_sans_medium</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+    </style>
+
+    <style name="ImageDescription">
+        <item name="android:fontFamily">@font/fira_sans_regular</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+    </style>
+
 </resources>
