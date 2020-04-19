@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="recentImage"
             type="com.rascarlo.astroeye.network.RecentImage" />
@@ -27,6 +29,7 @@
                 android:layout_height="@dimen/small_icon"
                 android:layout_margin="4dp"
                 android:contentDescription="@string/content_description_image"
+                android:visibility="@{recentImage.user != null &amp;&amp; recentImage.user.length() >= 1 ? View.VISIBLE : View.GONE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_account_circle_black_24dp" />
@@ -38,6 +41,7 @@
                 android:fontFamily="@font/fira_sans"
                 android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:visibility="@{recentImage.user != null &amp;&amp; recentImage.user.length() >= 1 ? View.VISIBLE : View.GONE}"
                 app:bindText="@{recentImage.user}"
                 app:layout_constraintBottom_toBottomOf="@id/user_image_view"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -56,13 +60,12 @@
                 app:layout_constraintTop_toBottomOf="@id/user_image_view"
                 app:srcCompat="@drawable/ic_broken_image_black_24dp" />
 
-            <!--android:text="@{recentImage.title != null ? recentImage.title : @string/not_available}"-->
-
             <TextView
                 android:id="@+id/title_text_view"
                 style="@style/ImageTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="@{recentImage.title != null &amp;&amp; recentImage.title.length() >= 1 ? View.VISIBLE : View.GONE}"
                 app:bindText="@{recentImage.title}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +81,7 @@
                 android:padding="4dp"
                 android:text="@{recentImage.uploaded}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:visibility="@{recentImage.uploaded != null &amp;&amp; recentImage.uploaded.length() >= 1 ? View.VISIBLE : View.GONE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_text_view"
                 tools:text="24 december 2020" />

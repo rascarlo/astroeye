@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.rascarlo.astroeye.detail.DetailViewModel" />
@@ -43,6 +45,7 @@
                     style="@style/ImageTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.recentImage.title != null &amp;&amp; viewModel.recentImage.title.length() >= 1 ? View.VISIBLE : View.GONE}"
                     app:bindText="@{viewModel.recentImage.title}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +57,7 @@
                     style="@style/ImageDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.recentImage.description != null &amp;&amp; viewModel.recentImage.description.length() >= 1 ? View.VISIBLE : View.GONE}"
                     app:bindText="@{viewModel.recentImage.description}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
