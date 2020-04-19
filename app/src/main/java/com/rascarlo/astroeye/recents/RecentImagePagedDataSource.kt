@@ -19,7 +19,6 @@ class RecentImagePagedDataSource : PageKeyedDataSource<String, RecentImage>() {
         params: LoadParams<String>,
         callback: LoadCallback<String, RecentImage>
     ) {
-        val request = api.getResponseRecentImagesDeferred(offset = params.requestedLoadSize)
         TODO("Not yet implemented")
     }
 
