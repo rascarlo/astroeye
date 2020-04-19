@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 29
@@ -41,52 +41,40 @@ android {
 }
 
 dependencies {
+
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
+    implementation deps.kotlin.stdlib.jdk7
 
-    // Constraint Layout
-    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+    // Coroutines
+    implementation deps.kotlin.coroutines.core
+    implementation deps.kotlin.coroutines.android
 
-    // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_extensions"
+    // AndroidX
+    implementation deps.androidx.activityKtx
+    implementation deps.androidx.coreKtx
+    implementation deps.androidx.constraintLayout
+    implementation deps.androidx.fragmentKtx
+    implementation deps.androidx.recyclerview
+    implementation deps.androidx.paging
 
-    // Navigation
-    implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
-    implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
+    // Android Navigation
+    implementation deps.android.arch.navigationFragment
+    implementation deps.android.arch.navigationUi
 
-    // Core with Ktx
-    implementation "androidx.core:core-ktx:$version_core"
+    // OkHttp
+    implementation deps.okhttp
 
-    // okhttp
-    implementation "com.squareup.okhttp3:okhttp:$version_okhttp"
+    // Retrofit
+    implementation deps.retrofit.core
+    implementation deps.retrofit.moshiConverter
 
-    // retrofit
-    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    // Moshi
+    implementation deps.moshi.core
+    implementation deps.moshi.kotlin
 
-    // moshi
-    implementation "com.squareup.moshi:moshi:$version_moshi"
-    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    // Glide
+    implementation deps.glide
 
-    // moshi converter
-    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
-
-    // coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
-
-    // retrofit coroutines
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
-
-    // glide
-    implementation "com.github.bumptech.glide:glide:$version_glide"
-
-    // recycler view
-    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
-
-    // pagination
-    implementation "androidx.paging:paging-runtime-ktx:$version_paging"
-
-    // timber
-    implementation "com.jakewharton.timber:timber:$version_timber"
+    // Timber
+    implementation deps.timber
 }

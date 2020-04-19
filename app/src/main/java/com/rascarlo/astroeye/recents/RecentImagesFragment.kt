@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,16 +26,14 @@ class RecentImagesFragment : Fragment() {
     /**
      * initialize [RecentImageViewModel]
      */
-    private val viewModel: RecentImageViewModel by lazy {
-        ViewModelProvider(this).get(RecentImageViewModel::class.java)
-    }
+    private val viewModel: RecentImageViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val application = requireNotNull(activity!!).application
+        val application = requireActivity().application
         // data binding
         val binding = FragmentRecentImagesBinding.inflate(inflater)
         // binding lifecycle owner
