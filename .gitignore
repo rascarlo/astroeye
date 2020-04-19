@@ -1,0 +1,27 @@
+*.iml
+/.idea
+/local.properties
+/.idea/caches
+/.idea/dictionaries
+/.idea/libraries
+/.idea/modules.xml
+/.idea/navEditor.xml
+/.idea/workspace.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+gradle/
+
+# generated files
+bin/
+gen/
+out/
+
+# apk
+*.apk
+
+# local properties
+local.properties

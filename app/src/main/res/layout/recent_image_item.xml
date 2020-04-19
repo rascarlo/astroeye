@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recentImage"
+            type="com.rascarlo.astroeye.network.RecentImage" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/user_image_view"
+                android:layout_width="@dimen/small_icon"
+                android:layout_height="@dimen/small_icon"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/content_description_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/user_text_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fontFamily="@font/fira_sans"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:bindText="@{recentImage.user}"
+                app:layout_constraintBottom_toBottomOf="@id/user_image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/user_image_view"
+                app:layout_constraintTop_toTopOf="@id/user_image_view"
+                tools:text="user" />
+
+            <ImageView
+                android:id="@+id/recent_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="192dp"
+                android:contentDescription="@string/content_description_image"
+                app:bindImage="@{recentImage.urlRegular}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_image_view"
+                app:srcCompat="@drawable/ic_broken_image_black_24dp" />
+
+            <TextView
+                android:id="@+id/title_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fira_sans_medium"
+                android:padding="4dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:bindText="@{recentImage.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recent_image_view"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/date_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:fontFamily="@font/fira_sans"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="@{recentImage.uploaded}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_text_view"
+                tools:text="24 december 2020" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

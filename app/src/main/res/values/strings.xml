@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AstroEye</string>
+    <string name="not_available">Not available</string>
+    <string name="content_description_image">Image</string>
+</resources>
