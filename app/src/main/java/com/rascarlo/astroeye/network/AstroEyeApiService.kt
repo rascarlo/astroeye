@@ -60,14 +60,10 @@ private val retrofit = Retrofit.Builder()
 // api service
 interface AstroEyeApiService {
 
-    /**
-     * get deferred object
-     * kotlin coroutine FTW
-     */
     @GET("api/v1/image/?s=images")
-    fun getResponseRecentImagesDeferred(
-        @Query("offset") offset: Int
-    ): Deferred<ResponseRecentImage>
+    suspend fun getResponseRecentImages(
+        @Query("offset") offset: Int = 0
+    ): ResponseRecentImage
 }
 
 // api
